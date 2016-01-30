@@ -1,8 +1,7 @@
 # imixs-mvn-repo
-The Github Imixs Maven Repository is containg artefacts from the imixs project which are not part of the maven central repository.
+The imixs-mvn-repo is providing artefacts from the imixs project which are not part of the central maven repository. Artefacts will be deployed into this repository by the different imixs sub-projects. 
 
-#Repo Configuration
-When you need to use artefacts from the imixs github repo you need to add this repository into the project pom as follows:
+When you need to use artefacts from the imixs github repo you can add the follwoing repository into the project pom:
 
     <repositories>
         <repository>
@@ -16,11 +15,10 @@ When you need to use artefacts from the imixs github repo you need to add this r
     </repositories>
 
 
-#Maven Deployment
-
+##Deployment
 The following section descirbes how to add the maven deploymen configuration into a porject. 
 
-##Authentication
+###Authentication
 To authenticate against the imixs-mvn-repo add the following server configuration into the maven ~.m2/settings.xml file
 
 
@@ -33,7 +31,7 @@ To authenticate against the imixs-mvn-repo add the following server configuratio
     	</server>
   
 
-##Project Configuration  
+###Project Configuration  
 
 The project configuration to enable the deploymen of artefacts into the imixs-github-repo looks like this:
 
@@ -92,7 +90,7 @@ The project configuration to enable the deploymen of artefacts into the imixs-gi
       ...
 
 
-##Deploy Artefacts on GitHub
+###Deploy Artefacts on GitHub
 To deploy the projects artefacts to github run:
 
 

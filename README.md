@@ -1,7 +1,7 @@
 # imixs-mvn-repo
-The imixs-mvn-repo is providing public maven artefacts from the imixs-workflow project, which are not part of the central maven repository. Artefacts will be deployed continuously into this repository by different imixs sub-projects. 
+The imixs-mvn-repo is providing public maven artifacts from the imixs-workflow project, which are not part of the central maven repository. Artifacts will be deployed continuously into this repository by different imixs sub-projects. 
 
-When you need to use artefacts from the imixs-mvn-repo on github, you can add the follwoing repository configuration into the project pom:
+When you need to use artifacts from the imixs-mvn-repo on github, you can add the follwoing repository configuration into the project pom:
 
     <repositories>
         <repository>
@@ -15,7 +15,7 @@ When you need to use artefacts from the imixs-mvn-repo on github, you can add th
     </repositories>
 
 
-##Deployment
+##Deployment and Project Setup
 The following section describes how to add the maven deployment configuration into a imixs subproject. This section is only for developers contributing into the imixs-mvn-repo. If you just want to use artifacts form the repo see the section above.
 
 ###Authentication - maven settings.xml
@@ -32,7 +32,7 @@ To deploy a new artifact into the imixs-mvn-repo you need to be a contributer fo
 
 ###Project Configuration - maven pom.xml  
 
-The project setup to deployment an artefact into the imixs-github-repo is configured in the project pom.xml and looks like follows:
+The project setup to deployment an artifact into the imixs-github-repo is configured in the project pom.xml and looks like follows:
 
       .....
       	<properties>
@@ -89,8 +89,8 @@ The project setup to deployment an artefact into the imixs-github-repo is config
 
 Note: The plugin configuration refers to repo server configuration in the ~.m2/settings.xml
 
-###Deploy Artefacts on GitHub
-To deploy the projects artefacts to github simply run:
+###How to Deploy Artifacts on GitHub
+To deploy the projects artifacts to github simply run:
 
 	mvn clean deploy 
 

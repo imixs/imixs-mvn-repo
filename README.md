@@ -92,4 +92,10 @@ The project configuration to enable the deploymen of artefacts into the imixs-gi
       ...
 
 
-		
+##Deploy Artefacts on GitHub
+To deploy the projects artefacts to github run:
+
+
+	mvn clean deploy 
+
+You should see maven-deploy-plugin create the files to your local staging repository in the target directory, then site-maven-plugin committing those files and pushing them to github. Now the artifact is available to public use.

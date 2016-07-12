@@ -3,10 +3,10 @@
   <groupId>org.imixs.workflow</groupId>
   <artifactId>imixs-adapters-datev-ejb</artifactId>
   <versioning>
-    <release>1.4.2</release>
+    <release>1.4.3</release>
     <versions>
-      <version>1.4.2</version>
+      <version>1.4.3</version>
     </versions>
-    <lastUpdated>20160710074423</lastUpdated>
+    <lastUpdated>20160712102143</lastUpdated>
   </versioning>
 </metadata>

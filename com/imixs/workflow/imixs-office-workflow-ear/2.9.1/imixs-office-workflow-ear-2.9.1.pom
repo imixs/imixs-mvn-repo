@@ -1,0 +1,148 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>imixs-office-workflow</artifactId>
+		<groupId>com.imixs.workflow</groupId>
+		<version>2.9.1</version>
+	</parent>
+	<artifactId>imixs-office-workflow-ear</artifactId>
+	<packaging>ear</packaging>
+	<name>Imixs Office Workflow EAR</name>
+
+
+	<description> </description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<version>6</version>
+					<applicationName>${imixs-office.applicationname}</applicationName>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<filtering>true</filtering>
+
+					<modules>
+						<!-- Web Gui -->
+						<webModule>
+							<groupId>com.imixs.workflow</groupId>
+							<artifactId>imixs-office-workflow-web</artifactId>
+							<contextRoot>${imixs-office.contextroot}</contextRoot>
+						</webModule>
+						<!-- Rest API -->
+						<webModule>
+							<groupId>com.imixs.workflow</groupId>
+							<artifactId>imixs-office-workflow-rest</artifactId>
+							<contextRoot>${imixs-office.contextroot}-rest</contextRoot>
+						</webModule>
+						<ejbModule>
+							<groupId>com.imixs.workflow</groupId>
+							<artifactId>
+								imixs-office-workflow-ejb
+							</artifactId>
+						</ejbModule>
+
+						<!-- Imixs componentes -->
+						<JarModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId> imixs-workflow-core</artifactId>
+							<bundleDir>/</bundleDir>
+						</JarModule>
+						<JarModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-workflow-engine </artifactId>
+							<bundleDir>/</bundleDir>
+						</JarModule>
+						<JarModule>
+							<groupId>org.imixs.marty</groupId>
+							<artifactId>imixs-marty-ejb</artifactId>
+							<bundleDir>/</bundleDir>
+						</JarModule>
+						
+						<JarModule>
+							<groupId>org.imixs.workflow</groupId>
+							<artifactId>imixs-adapters-lucene-ejb</artifactId>
+							<bundleDir>/</bundleDir>
+						</JarModule>
+
+					</modules>
+
+
+					<unpackTypes>${custom.unpackTypes}</unpackTypes>
+
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<dependencies>
+		<!-- Imixs Workflow -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-core</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-workflow-engine</artifactId>
+			<type>jar</type>
+		</dependency>
+
+		<!-- Marty -->
+		<dependency>
+			<groupId>org.imixs.marty</groupId>
+			<artifactId>imixs-marty-ejb</artifactId>
+			<type>jar</type>
+		</dependency>
+		
+		<!-- lucene -->
+		<dependency>
+			<groupId>org.imixs.workflow</groupId>
+			<artifactId>imixs-adapters-lucene-ejb</artifactId>
+		</dependency>
+		
+
+		<!-- Office -->
+		<dependency>
+			<groupId>com.imixs.workflow</groupId>
+			<artifactId>
+				imixs-office-workflow-ejb
+			</artifactId>
+			<version>${project.version}</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>com.imixs.workflow</groupId>
+			<artifactId>imixs-office-workflow-web</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>com.imixs.workflow</groupId>
+			<artifactId>imixs-office-workflow-rest</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+
+
+		<!-- Apache Lucene -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-analyzers-common</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-queryparser</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+	</dependencies>
+</project>

@@ -3,10 +3,10 @@
   <groupId>org.imixs.marty</groupId>
   <artifactId>imixs-marty-util</artifactId>
   <versioning>
-    <release>2.9.1</release>
+    <release>3.0.0</release>
     <versions>
-      <version>2.9.1</version>
+      <version>3.0.0</version>
     </versions>
-    <lastUpdated>20161115111015</lastUpdated>
+    <lastUpdated>20161117212756</lastUpdated>
   </versioning>
 </metadata>

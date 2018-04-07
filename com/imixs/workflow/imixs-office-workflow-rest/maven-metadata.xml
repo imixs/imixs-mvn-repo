@@ -3,10 +3,9 @@
   <groupId>com.imixs.workflow</groupId>
   <artifactId>imixs-office-workflow-rest</artifactId>
   <versioning>
-    <release>3.2.0</release>
     <versions>
-      <version>3.2.0</version>
+      <version>3.2.1-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20180219142139</lastUpdated>
+    <lastUpdated>20180407131315</lastUpdated>
   </versioning>
 </metadata>

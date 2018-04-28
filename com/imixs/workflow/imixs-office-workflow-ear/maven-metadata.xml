@@ -3,10 +3,10 @@
   <groupId>com.imixs.workflow</groupId>
   <artifactId>imixs-office-workflow-ear</artifactId>
   <versioning>
-    <release>3.2.1</release>
+    <release>3.2.2</release>
     <versions>
-      <version>3.2.1</version>
+      <version>3.2.2</version>
     </versions>
-    <lastUpdated>20180407135430</lastUpdated>
+    <lastUpdated>20180428145419</lastUpdated>
   </versioning>
 </metadata>

@@ -1,0 +1,367 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.imixs.workflow</groupId>
+	<artifactId>imixs-office-workflow</artifactId>
+	<version>3.3.1</version>
+	<packaging>pom</packaging>
+	<name>Imixs Office Workflow</name>
+	<description>The Imixs Workflow Office Suite </description>
+
+
+	<developers>
+		<developer>
+			<id>rsoika</id>
+			<name>Ralph Soika</name>
+			<email>ralph.soika@imixs.com</email>
+			<url>http://blog.imixs.org/</url>
+			<organization>Imixs Software Solutions GmbH</organization>
+			<organizationUrl>http://www.imixs.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>testing</role>
+			</roles>
+			<timezone>2</timezone>
+		</developer>
+
+		<developer>
+			<id>gaheinle</id>
+			<name>Gaby Heinle</name>
+			<email />
+			<url />
+			<organization>Imixs Software Solutions GmbH</organization>
+			<organizationUrl>http://www.imixs.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+				<role>testing</role>
+			</roles>
+			<timezone>2</timezone>
+		</developer>
+	</developers>
+	<issueManagement>
+		<url>https://github.com/imixs/imixs-office-workflow/issues</url>
+	</issueManagement>
+	<scm>
+		<connection>scm:git:https://github.com/imixs/imixs-office-workflow.git</connection>
+		<developerConnection>scm:git:https://github.com/imixs/imixs-office-workflow.git</developerConnection>
+		<url>https://github.com/imixs/imixs-office-workflow/</url>
+		<tag>imixs-office-workflow-3.3.1</tag>
+	</scm>
+
+
+	<licenses>
+		<license>
+			<name>GNU General Public License</name>
+			<url>http://www.gnu.org/licenses/gpl-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>All the results of the imixs workflow project are subject to the GPL licensing model. </comments>
+		</license>
+	</licenses>
+
+
+
+	<modules>
+		<module>imixs-office-workflow-ejb</module>
+		<module>imixs-office-workflow-web</module>
+		<module>imixs-office-workflow-ear</module>
+		<module>imixs-office-workflow-rest</module>
+	</modules>
+	<properties>
+		<!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
+			because of resource filtering is enabled we can not use UTF-8 for some strange 
+			reasons. When setting sourceEncoding to ISO-8859-1 the special german charcters 
+			works fine -->
+		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+
+		<!-- Build Time -->
+		<org.imixs.build.timestamp>${maven.build.timestamp}</org.imixs.build.timestamp>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+
+		<!-- Dependency Versions -->
+		<org.imixs.workflow.version>4.3.5</org.imixs.workflow.version>
+		<org.imixs.marty.version>3.3.1</org.imixs.marty.version>
+		<org.imixs.office.version />
+		<lucene.version>6.6.1</lucene.version>
+		<org.imixs.adapters.version>1.5.2</org.imixs.adapters.version>
+		<org.imixs.archive.version>1.1.0</org.imixs.archive.version>
+		<apache.poi.version>3.17</apache.poi.version>
+		<apache.pdfbox.version>2.0.7</apache.pdfbox.version>
+		<apache.tika.version>1.16</apache.tika.version>
+
+		<custom.webResources>src/main/webapp</custom.webResources>
+		<imixs-office.applicationname>imixs-office-workflow</imixs-office.applicationname>
+
+
+		<!-- Environment Settings -->
+		<imixs-office.contextroot>/</imixs-office.contextroot>
+		<imixs-office.realm>imixsrealm</imixs-office.realm>
+		<imixs-office.jta-data-source>jdbc/office</imixs-office.jta-data-source>
+		<imixs-office.IndexDir>lucene/office-workflow-index</imixs-office.IndexDir>
+		<!-- jndi Mail res-ref name -->
+		<imixs-mail-res-ref-name>java:/mail/org.imixs.workflow.mail</imixs-mail-res-ref-name>
+
+		<!-- imixs-github-repo on github - see ~/.m2/settings.xml -->
+		<github.global.server>imixs-github-repo</github.global.server>
+
+
+		<!-- Wildfly unpack war -->
+		<custom.unpackTypes>war</custom.unpackTypes>
+	</properties>
+
+
+	<repositories>
+		<!-- Sonatype Snapshot repository -->
+		<repository>
+			<id>sonatype-snaptshots</id>
+			<name>Sonatype Snapshot repository</name>
+			<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+		</repository>
+		<!-- Imixs repository -->
+		<repository>
+			<id>imixs-mvn-repo</id>
+			<url>https://raw.githubusercontent.com/imixs/imixs-mvn-repo/master/</url>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<profiles>
+		<profile>
+			<id>docker</id>
+			<!-- build latest - see ear module for details -->
+		</profile>
+		<profile>
+			<id>docker-build</id>
+			<!-- build current version local - see ear module for details -->
+		</profile>
+		<profile>
+			<id>docker-push</id>
+			<!-- build and push to repp - see ear module for details -->
+		</profile>
+		<profile>
+			<id>docker-hub</id>
+			<!-- build and push to docker hub - see ear module for details -->
+		</profile>
+
+	</profiles>
+
+	<build>
+		<resources>
+			<!-- enable resource filtering for multi language version -->
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+
+			<!-- release management -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+
+			<!-- Maven Deployment to Github -->
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.12</version>
+				<configuration>
+					<!-- git commit message -->
+					<message>Maven artifacts for ${project.version}</message>
+					<!-- disable webpage processing -->
+					<noJekyll>true</noJekyll>
+					<!-- matches distribution management repository url above -->
+					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+					<!-- remote branch name -->
+					<branch>refs/heads/master</branch>
+					<!-- If you remove this then the old artifact will be removed and new 
+						one will replace. But with the merge tag you can just release by changing 
+						the version -->
+					<merge>true</merge>
+					<includes>
+						<include>**/*</include>
+					</includes>
+					<!-- github repo name -->
+					<repositoryName>imixs-mvn-repo</repositoryName>
+					<!-- github username -->
+					<repositoryOwner>imixs</repositoryOwner>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>deploy</phase>
+					</execution>
+				</executions>
+			</plugin>
+
+
+		</plugins>
+	</build>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Imixs Workflow -->
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-core</artifactId>
+				<version>${org.imixs.workflow.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-engine</artifactId>
+				<version>${org.imixs.workflow.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-faces</artifactId>
+				<!-- <version>${org.imixs.workflow.version}</version> -->
+				<version>${org.imixs.workflow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-workflow-jax-rs</artifactId>
+				<version>${org.imixs.workflow.version}</version>
+			</dependency>
+
+
+			<!-- Marty -->
+			<dependency>
+				<groupId>org.imixs.marty</groupId>
+				<artifactId>imixs-marty-util</artifactId>
+				<version>${org.imixs.marty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.imixs.marty</groupId>
+				<artifactId>imixs-marty-ejb</artifactId>
+				<version>${org.imixs.marty.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Apache Lucene -->
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-core</artifactId>
+				<version>${lucene.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-analyzers-common</artifactId>
+				<version>${lucene.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-queryparser</artifactId>
+				<version>${lucene.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- QR-Code service -->
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-adapters-qrcode</artifactId>
+				<version>${org.imixs.adapters.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Imixs-Archive -->
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-archive-api</artifactId>
+				<version>${org.imixs.archive.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Core Document Parser -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${apache.poi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${apache.poi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-scratchpad</artifactId>
+				<version>${apache.poi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.pdfbox</groupId>
+				<artifactId>pdfbox</artifactId>
+				<version>${apache.pdfbox.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.imixs.workflow</groupId>
+				<artifactId>imixs-adapters-documents</artifactId>
+				<version>${org.imixs.adapters.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<!-- JEE Dependencies -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- JUnit Tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>

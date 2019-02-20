@@ -3,10 +3,10 @@
   <groupId>org.imixs.workflow</groupId>
   <artifactId>imixs-adapters-documents</artifactId>
   <versioning>
-    <release>1.5.5</release>
+    <release>1.5.6</release>
     <versions>
-      <version>1.5.5</version>
+      <version>1.5.6</version>
     </versions>
-    <lastUpdated>20181205215241</lastUpdated>
+    <lastUpdated>20190220110151</lastUpdated>
   </versioning>
 </metadata>
